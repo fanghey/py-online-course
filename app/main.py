@@ -1,19 +1,18 @@
 import math
 
+
 class OnlineCourse:
     def __init__(self, name: str, description: str, weeks: int) -> None:
-        self.name: str = name
-        self.description: str = description
-        self.weeks: int = weeks
+        self.name = name
+        self.description = description
+        self.weeks = weeks
 
     @staticmethod
     def days_to_weeks(days: int) -> int:
-        # math.ceil корректно округляет до следующего целого (неполная неделя)
         return math.ceil(days / 7)
 
     @classmethod
     def from_dict(cls, course_dict: dict) -> "OnlineCourse":
-        # Используем метод класса для конвертации и создания экземпляра
         weeks = cls.days_to_weeks(course_dict["days"])
         return cls(
             name=course_dict["name"],
